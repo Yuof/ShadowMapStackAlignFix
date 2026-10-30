@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.24)
+
+project(
+	ShadowMapStackAlignFix
+	VERSION 1.0.0
+	LANGUAGES CXX
+)
+
+list(APPEND CMAKE_IGNORE_PATH "${PROJECT_BINARY_DIR}")
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/Tools/SKSE-CMakeModules/Modules")
+include(SKSEPlugin)
+
+set(SKSE_USE_XBYAK OFF)
+set(SKSE_COMMONLIBSSE_PATH "External/CommonLibSSE-NG")
+set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(ENABLE_SKYRIM_SE ON CACHE BOOL "" FORCE)
+set(ENABLE_SKYRIM_AE ON CACHE BOOL "" FORCE)
+set(ENABLE_SKYRIM_VR OFF CACHE BOOL "" FORCE)
+
+SKSEPlugin_Add(
+	${PROJECT_NAME}
+	SOURCE_DIR src
+	PRECOMPILE_HEADERS
+		src/PCH.h
+)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE NOMINMAX)
+
+option(REPRODUCE_MISALIGNMENT "probe build: keep Engine Fixes' stack offset in the stub" OFF)
+if(REPRODUCE_MISALIGNMENT)
+	target_compile_definitions(${PROJECT_NAME} PRIVATE REPRODUCE_MISALIGNMENT)
+endif()

@@ -1,0 +1,18 @@
+{
+  "name": "shadowmapstackalignfix",
+  "version-string": "1.0.0",
+  "description": "SKSE plugin: calls Engine Fixes' ShadowMap render-pass fix with a 16-byte aligned stack (SkyrimSE crash in EngineFixes.dll tbbmalloc, movdqa on a misaligned stack).",
+  "license": "GPL-3.0-or-later",
+  "dependencies": [
+    "directxmath",
+    "directxtk",
+    "fmt",
+    "nlohmann-json",
+    "rapidcsv",
+    "simpleini",
+    "spdlog",
+    "toml11",
+    "xbyak"
+  ],
+  "builtin-baseline": "ee12231b20c95013c6638d845d04c91559a1d1ff"
+}
