@@ -36,6 +36,11 @@ cmake --build --preset release
 The DLL is `build/Release/ShadowMapStackAlignFix.dll`. `-DREPRODUCE_MISALIGNMENT=ON` builds a probe whose stub keeps
 Engine Fixes' 8-byte offset, to show the counter and the crash; never install it.
 
+## Credits
+- [williamrod98](https://github.com/williamrod98) found this bug, traced it to the stub and proposed the aligned
+  instruction sequence in [#102](https://github.com/aers/EngineFixesSkyrim64/issues/102); this plugin's stub uses it.
+- aers, Nukem and Ryan for Engine Fixes.
+
 ## License
 [GPL-3.0-or-later](LICENSE), as required by [CommonLibSSE NG](https://github.com/alandtse/CommonLibVR) (GPL-3.0-or-later
 with its modding exceptions), which this plugin links statically.
