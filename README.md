@@ -1,8 +1,9 @@
 # ShadowMap Stack Align Fix
 
-SKSE plugin for Skyrim Special Edition (Anniversary Edition runtime 1.6.1170 tested; built for SE 1.5.97 too,
-untested there). Fixes a crash in [Engine Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/17230) 7.0.19 /
-7.0.20: an access violation in `EngineFixes.dll` (tbbmalloc's large-object cache, `movdqa` to the stack).
+SKSE plugin for Skyrim Special Edition: SE 1.5.97 and AE 1.6.317 - 1.7.104, one DLL; tested on 1.6.1170. Fixes a
+crash in [Engine Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/17230) (7.0.19, 7.0.20 and the 7.0.21
+betas carry the same code): an access violation in `EngineFixes.dll` (tbbmalloc's large-object cache, `movdqa` to the
+stack).
 
 Engine Fixes' `bBSLightingShaderPropertyShadowMap` fix jumps from the middle of the game's
 `BSLightingShaderProperty::GetRenderPasses_ShadowMapOrMask` into a generated stub that calls its detour after
@@ -21,7 +22,7 @@ While active it logs, at the 1st, 10th, 100th ... call, how many detour calls en
 ## Requirements
 - [SKSE64](https://skse.silverlock.org/)
 - [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
-- [Engine Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/17230) 7.0.19 or 7.0.20 (nothing to fix without it)
+- [Engine Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/17230) with its ShadowMap fix on (the default; nothing to fix without it)
 
 ## Building
 Visual Studio 2022 or newer (C++), CMake 3.24+, [vcpkg](https://github.com/microsoft/vcpkg) with `VCPKG_ROOT` set.
